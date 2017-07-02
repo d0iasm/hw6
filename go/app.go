@@ -1,8 +1,9 @@
 package app
 
 import (
-	"fmt"
+	// "fmt"
 	"net/http"
+	"html/template"
 )
 
 func init() {
@@ -10,6 +11,8 @@ func init() {
 }
 
 func handlePata(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	fmt.Fprintf(w, "Hello world!\n")
+	// w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	// fmt.Fprintf(w, "Hello world!!!!\n")
+	tmpl := template.Must(template.ParseFiles("./index.html"))
+	tmpl.Execute(w, "hoge")
 }
