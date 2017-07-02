@@ -14,7 +14,13 @@ func init() {
 func handlePata(w http.ResponseWriter, r *http.Request) {
 	// w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	// fmt.Fprintf(w, "Hello world!!!!\n")
-	result := "hoge"
+	a := r.FormValue("a")
+	b := r.FormValue("b")
+	result := combine(a, b)
 	tmpl := template.Must(template.ParseFiles("./index.html"))
 	tmpl.Execute(w, result)
+}
+
+func combine(a, b string) string {
+	return a + b
 }
