@@ -12,7 +12,7 @@ func init() {
 }
 
 func handlePata(w http.ResponseWriter, r *http.Request) {
-	// w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	// fmt.Fprintf(w, "Hello world!!!!\n")
 	a := r.FormValue("a")
 	b := r.FormValue("b")
@@ -22,5 +22,23 @@ func handlePata(w http.ResponseWriter, r *http.Request) {
 }
 
 func combine(a, b string) string {
-	return a + b
+	result := ""
+	shorter := ""
+	longer := ""
+	if len(a) < len(b) {
+		shorter = a
+		longer = b
+	} else {
+		shorter = b
+		longer = a
+	}
+
+	for i := 0; i < len(shorter); i++ {
+		result += longer[i : i+1]
+		result += shorter[i : i+1]
+	}
+	for i := len(shorter); i < len(longer); i++ {
+		result += longer[i:]
+	}
+	return result
 }
