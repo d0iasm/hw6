@@ -25,7 +25,7 @@ func combine(a, b string) string {
 	result := ""
 	shorter := ""
 	longer := ""
-	if len(a) < len(b) {
+	if len([]rune(a)) < len([]rune(b)) {
 		shorter = a
 		longer = b
 	} else {
@@ -33,12 +33,12 @@ func combine(a, b string) string {
 		longer = a
 	}
 
-	for i := 0; i < len(shorter); i++ {
-		result += longer[i : i+1]
-		result += shorter[i : i+1]
+	for i := 0; i < len([]rune(shorter)); i++ {
+		result += string([]rune(longer)[i])
+		result += string([]rune(shorter)[i])
 	}
-	for i := len(shorter); i < len(longer); i++ {
-		result += longer[i:]
+	for i := len([]rune(shorter)); i < len([]rune(longer)); i++ {
+		result += string([]rune(longer)[i])
 	}
 	return result
 }
