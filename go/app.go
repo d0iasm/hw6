@@ -1,7 +1,6 @@
 package app
 
 import (
-	// "fmt"
 	"html/template"
 	"net/http"
 )
@@ -12,8 +11,6 @@ func init() {
 }
 
 func handlePata(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	// fmt.Fprintf(w, "Hello world!!!!\n")
 	a := r.FormValue("a")
 	b := r.FormValue("b")
 	result := combine(a, b)
